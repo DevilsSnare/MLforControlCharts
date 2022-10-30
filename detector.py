@@ -194,25 +194,3 @@ class AnomalyDetector:
                 values[i+8] = 1
 
         data['Rule8'] = values
-
-        return new_df
-
-def kick(new_df, mean, sigma):
-    detector.rule1(new_df,mean,sigma)
-    detector.rule2(new_df, mean)
-    detector.rule3(new_df)
-    detector.rule4(new_df)
-    detector.rule5(new_df, mean, sigma)
-    detector.rule6(new_df, mean, sigma)
-    detector.rule7(new_df, mean, sigma)
-    detector.rule8(new_df, mean, sigma)
-
-    control_check=False
-    for x in new_df.any(axis=1) :
-        if x==False :
-            control_check=True
-            break
-    if control_check==False :
-        print("Process is in Control")
-    else :
-        print("Process is Out of Control")
