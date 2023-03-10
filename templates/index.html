@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLbasedApproachForControlCharts</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../static/js/script.js"></script>
+</head>
+<body>
+    <div class="App">
+        <nav>
+          <div class="nav-brand">
+            <img src="static/logo.png" alt="logo" class="brand-logo-logo"/>
+          </div>
+          <div class="top-links">
+            <a href="index.html"><img src="static/presentation.png" alt="presentation class" class="presentation"/></a>
+            <a href="https://github.com/DevilsSnare/MLforControlCharts"><img src="static/github.png" alt="github" class="github"/></a>
+          </div>
+        </nav>
+        <hr></hr>
+        <div class="second-row">
+            <div class="main-buttons">
+                <input id="upload_csv" type="file" style="display:hidden" accept=".csv" />
+                <button href="" id="upload_link" class="upload button-top" onclick="readCSVFile()">upload</button>
+                <button href="" class="reset button-top" style="margin-left: 5px;">reset</button>
+                <button href="" class="download button-top" style="margin-left: 5px;">download</button>
+            </div>
+            <div class="file-name">
+                selected file name will show up here
+            </div>
+        </div>
+        <div class="content">
+            <div class="first">
+                <div class="what">how to use</div>
+            </div>
+            <div class="charts">
+                <div class="what">charts</div>
+            </div>
+            <div class="anomaly">
+                <div class="what">anomalies detected</div>
+            </div>
+            <div class="trend">
+                <div class="what">trend analysis</div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
