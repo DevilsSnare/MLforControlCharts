@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../static/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../static/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
 </head>
 <body>
     <div class="App">
@@ -23,8 +25,10 @@
         <hr></hr>
         <div class="second-row">
             <div class="main-buttons">
-                <input id="upload_csv" type="file" style="display:hidden" accept=".csv" />
-                <button href="" id="upload_link" class="upload button-top" onclick="readCSVFile()">upload</button>
+                <form class="" action ="data" method="post" enctype="multipart/form-data">
+                    <input type="file" name = "upload-file" value="" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                    <input type="submit" name="" value = "Upload" />
+                </form>
                 <button href="" class="reset button-top" style="margin-left: 5px;">reset</button>
                 <button href="" class="download button-top" style="margin-left: 5px;">download</button>
             </div>
