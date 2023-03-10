@@ -1,5 +1,5 @@
 from flask import Flask, app, render_template, request
-
+import pandas as pd
 app = Flask(__name__)
 
 
@@ -7,9 +7,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/get_csv_data', methods = ['POST'])
-def get_csv_data():
-    jsdata = request.form['csv_data']
-    print (jsdata)
-    return jsdata
+@app.route('/data', methods = ['POST'])
+def data():
+    excelData = request.files['upload-file']
+    df = pd.read_excel(excelData)
+    print(df)
+    return "success"
 
