@@ -115,7 +115,7 @@
   }
   .anomaly {
     background-color: #929191;
-    height: 150px;
+    /* height: 250px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -135,6 +135,13 @@
     font-weight: 700;
     color: white;
   }
+  .inside-anomaly {
+    margin: auto;
+    padding-top:0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+  }
   footer {
     margin: auto;
     max-width: 800px;
@@ -142,4 +149,7 @@
     margin-top: 20px;
     border-radius: 8px;
     background: black;
+  }
+  iframe {
+    display: none;
   }
