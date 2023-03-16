@@ -15,26 +15,26 @@
     <div class="App">
         <nav>
           <div class="nav-brand">
-            <img src="static/logo.png" alt="logo" class="brand-logo-logo"/>
+            <img src="/static/logo.png" alt="logo" class="brand-logo-logo"/>
           </div>
           <div class="top-links">
-            <a href="index.html"><img src="static/presentation.png" alt="presentation class" class="presentation"/></a>
-            <a href="https://github.com/DevilsSnare/MLforControlCharts"><img src="static/github.png" alt="github" class="github"/></a>
+            <a href="/templates/index.html"><img src="/static/presentation.png" alt="presentation class" class="presentation"/></a>
+            <a href="https://github.com/DevilsSnare/MLforControlCharts"><img src="/static/github.png" alt="github" class="github"/></a>
           </div>
         </nav>
         <hr></hr>
         <div class="second-row">
             <div class="main-buttons">
-                <form class="" action ="data" method="post" enctype="multipart/form-data">
-                    <input type="file" name = "upload-file" value="" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
-                    <input type="submit" name="" value = "Upload" />
+                <form class="button-top upload-button" id="form" action ="/templates/index.html" method="post" enctype="multipart/form-data">
+                    <input id="file" class="input-button" type="file" name = "upload-file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                    <!-- <input type="submit" name="" value = "Upload" /> -->
                 </form>
                 <button href="" class="reset button-top" style="margin-left: 5px;">reset</button>
                 <button href="" class="download button-top" style="margin-left: 5px;">download</button>
             </div>
-            <div class="file-name">
+            <!-- <div class="file-name">
                 selected file name will show up here
-            </div>
+            </div> -->
         </div>
         <div class="content">
             <div class="first">

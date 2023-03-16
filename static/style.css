@@ -80,10 +80,16 @@
     text-transform: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    vertical-align: middle;
   }
   .button-top:hover,
   .button-top:focus {
     opacity: .75;
+  }
+  .upload-button .input-button {
+    font-family: "InterRegular", sans-serif;
+    font-weight: 600;
+    font-size: 15px;    
   }
   .file-name {
     padding: 7px 0px 7px;
