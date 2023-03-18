@@ -108,7 +108,7 @@
   }
   .charts {
     background-color: #929191;
-    height: 260px;
+    /* height: 260px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -122,7 +122,7 @@
   }
   .trend {
     background-color: #929191;
-    height: 150px;
+    /* height: 150px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
