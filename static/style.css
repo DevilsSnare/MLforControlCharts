@@ -91,17 +91,13 @@
     font-weight: 600;
     font-size: 15px;    
   }
-  .file-name {
-    padding: 7px 0px 7px;
-    font-size: 15px;
-  }
   .content {
     margin: auto;
     max-width: 800px;
   }
   .first {
     background-color: #929191;
-    height: 150px;
+    /* height: 150px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -113,14 +109,27 @@
     margin-top: 15px;
     margin-bottom: 15px;
   }
-  .anomaly {
+  .chart-image {
+    margin: auto;
+    /* padding: 15px 0; */
+    width: 450px;
+    display: none;
+    justify-content: center;
+    border: 18px solid #929191;
+    border-radius: 4px;
+    transition: transform .3s;
+  }
+  .chart-image:hover {
+    transform: scale(1.5);
+  }
+  .general_analysis {
     background-color: #929191;
     /* height: 250px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
   }
-  .trend {
+  .trend_analysis {
     background-color: #929191;
     /* height: 150px; */
     border-radius: 8px;
@@ -135,12 +144,31 @@
     font-weight: 700;
     color: white;
   }
+  .how-to {
+    margin: auto;
+    padding-top:0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+  }
   .inside-anomaly {
     margin: auto;
     padding-top:0px;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 4px;
+  }
+  .inside-trend {
+    margin: auto;
+    padding-top:0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+  }
+  .loading {
+    text-align: center;
+    /* margin-top: 80px;
+    margin-bottom: 80px; */
   }
   footer {
     margin: auto;

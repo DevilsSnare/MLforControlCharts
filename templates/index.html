@@ -32,28 +32,24 @@
                 <button onClick="window.location.reload()" class="reset button-top" style="margin-left: 5px;">reset</button>
                 <button  id="cmd" class="download button-top" style="margin-left: 5px;">download</button>
             </div>
-            <!-- <div class="file-name">
-                selected file name will show up here
-            </div> -->
         </div>
         <div class="content" id="content">
+            <div class="loading" id="loading">
+                <!-- <img src="static/processing.gif" width="15%"> -->
+            </div>
             <div class="first" id="first">
                 <div class="what">how to use</div>
+                <div class="how-to">instruction to use this service</div>
             </div>
-            <div class="charts">
-                <div class="what">charts</div>
-                <!-- <img src="/plot.png" alt="my plot"> -->
+            <div class="charts" id="charts">
             </div>
-            <div class="anomaly">
-                <div class="what">general analysis</div>
-                <div class="inside-anomaly" id="anomaly"></div>
+            <div class="general_analysis" id="general_analysis">
             </div>
-            <div class="trend">
-                <div class="what">trend analysis</div>
+            <div class="trend_analysis" id="trend_analysis">
             </div>
         </div>
-        <footer>
-        </footer>
+        <!-- <footer>
+        </footer> -->
     </div>
     <iframe name="frame"></iframe>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
