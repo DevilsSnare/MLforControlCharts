@@ -52,7 +52,7 @@ def xbar_r(sample_data):
     analysis2=""
 
     # print("X bar Chart:")
-    analysis1+="X bar Chart: --> Sample "
+    analysis1+="X bar Chart: "
     main_arr = axs[0].lines[0].get_data()
     main_arr_df = pd.DataFrame()
     main_arr_df['x']=main_arr[0]
@@ -67,15 +67,16 @@ def xbar_r(sample_data):
             scatter_arr_y.append(main_arr_df.iloc[i][1])
             scatter_arr_x.append(main_arr_df.iloc[i][0])
             control = False
-        i += 1
-    analysis1+='is/are out of control limits! '
+        i += 1    
     if control == True:
         analysis1+='--> All points within control limits. '
+    else:
+        analysis1+='is/are out of control limits! '
 
     axs[0].scatter(scatter_arr_x, scatter_arr_y, marker='o', color='y', s=150)    
         
     # print("R Chart")
-    analysis2+="R Chart: --> Sample "
+    analysis2+="R Chart: "
     main_arr = axs[1].lines[0].get_data()
     main_arr_df = pd.DataFrame()
     main_arr_df['x']=main_arr[0]
@@ -91,9 +92,11 @@ def xbar_r(sample_data):
             scatter_arr_x.append(main_arr_df.iloc[i][0])
             control = False
         i += 1
-    analysis2+='is/are out of control limits! '
+
     if control == True:
         analysis2+='-->All points within control limits. '
+    else:
+        analysis2+='is/are out of control limits! ' 
 
     axs[1].scatter(scatter_arr_x, scatter_arr_y, marker='o', color='y', s=150)    
 
