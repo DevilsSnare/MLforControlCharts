@@ -28,15 +28,15 @@ def data():
     session["what_type"]=what_type
     session["what"]=what
     if(what=="Data will use 'X bar & R chart'"):
-        analysis1, analysis2, controlSay, fig = xbar_r.xbar_r(df)
-    # elif(what=="Data will use 'X bar & S chart'"):
-    #     xbar_s(df)
-    # elif(what=="Data will use 'XmR chart'"):
-    #     xmR(df)
-    # elif(what=="Data will use 'C chart'"):
-    #     cChart(df)
-    # elif(what=="Data will use 'P chart'"):
-    #     pChart(df)
+        analysis1, analysis2, controlSay = xbar_r.xbar_r(df)
+    if(what=="Data will use 'X bar & S chart'"):
+        analysis1, analysis2, controlSay = xbar_s.xbar_s(df)
+    if(what=="Data will use 'C chart'"):
+        analysis1, analysis2, controlSay = cChart.cChart(df)
+    if(what=="Data will use 'XmR chart'"):
+        analysis1, analysis2, controlSay = xmR.xmR(df)
+    if(what=="Data will use 'P chart'"):
+        analysis1, analysis2, controlSay = pChart.pChart(df)
 
     trend = model.findTrend(df)
 

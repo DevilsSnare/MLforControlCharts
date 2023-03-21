@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statistics
-import os
 
 import detector
 
@@ -29,8 +28,8 @@ def xbar_r(sample_data):
 
     ## x-bar chart
     axs[0].plot(x_bar, linestyle='-', marker='o', color='black')
-    axs[0].axhline((statistics.mean(x_bar)+A2*statistics.mean(r)), color='darkred', linestyle='dashed', label='+3 Sigma / UCL')
-    axs[0].axhline((statistics.mean(x_bar)-A2*statistics.mean(r)), color='darkgreen', linestyle='dashed', label='-3 Sigma / LCL')
+    axs[0].axhline((statistics.mean(x_bar)+A2*statistics.mean(r)), color='red', linestyle='dashed', label='+3 Sigma / UCL')
+    axs[0].axhline((statistics.mean(x_bar)-A2*statistics.mean(r)), color='red', linestyle='dashed', label='-3 Sigma / LCL')
     axs[0].axhline((statistics.mean(x_bar)), color='blue', label='CL')
     axs[0].set_title('X-bar Chart')
     axs[0].set(xlabel='Sample', ylabel='Range')
@@ -38,8 +37,8 @@ def xbar_r(sample_data):
 
     ## R chart
     axs[1].plot(r, linestyle='-', marker='o', color='black')
-    axs[1].axhline((D4*statistics.mean(r)), color='darkred', linestyle='dashed', label='+3 Sigma / UCL')
-    axs[1].axhline((D3*statistics.mean(r)), color='darkgreen', linestyle='dashed', label='-3 Sigma / LCL')
+    axs[1].axhline((D4*statistics.mean(r)), color='red', linestyle='dashed', label='+3 Sigma / UCL')
+    axs[1].axhline((D3*statistics.mean(r)), color='red', linestyle='dashed', label='-3 Sigma / LCL')
     axs[1].axhline((statistics.mean(r)), color='blue', label='CL')
     axs[1].set_ylim(bottom=0)
     axs[1].set_title('R Chart')
@@ -120,4 +119,4 @@ def xbar_r(sample_data):
     # print("\nFrom Control Chart Rules:")
     controlSay = detector.anomalyDetection(df_grouped)
     fig.savefig('./static/temp.png')   # save the figure to file
-    return analysis1, analysis2, controlSay, fig
+    return analysis1, analysis2, controlSay

@@ -29,6 +29,9 @@ function data() {
             if (result.trend=='upward_shift' || result.trend=='downward_shift') {
                 document.getElementById('trend').innerHTML='<p>'+result.trend+'</p><p>These shifts may result from the introduction of new workers, methods, raw materials, or machine, a change in the inspection method or standards, or change in either the skill, attentiveness, or motivation of the operators. Sometimes an improvement in the process performance is noted following introduction of a control chart program, simply because of motivational factors influencing the workers.</p>';
             }
+            if (result.trend=='normal') {
+                document.getElementById('trend').innerHTML='<p>'+result.trend+'</p><p>Normal trend, or a tendency for the points to cluster artificially around the center line, is a marked lack of natural variability in the observed pattern. One potential cause of normal/stratification is incorrect calculation of control limits. It may result from incorrect subgrouping. In collecting data for setting up R chart,if the largest and smallest data in each sample are relatively far apart, average range R will be incorrectly inflated, causing the limits on the X chart to be too wide.</p>';
+            }
             console.log(result);
         },
         error: function(err) {
