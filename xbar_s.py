@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statistics
+import pylab
 
 import detector
 
@@ -32,7 +33,7 @@ def xbar_s(sample_data):
     axs[0].axhline((statistics.mean(x_bar)), color='blue', label='CL')
     axs[0].set_title('X-bar Chart')
     axs[0].set(xlabel='Sample', ylabel='Range')
-    axs[0].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
+    # axs[0].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     ## S chart
     axs[1].plot(s, linestyle='-', marker='o', color='black')
@@ -42,9 +43,13 @@ def xbar_s(sample_data):
     axs[1].set_ylim(bottom=0)
     axs[1].set_title('S Chart')
     axs[1].set(xlabel='Sample', ylabel='Range')
-    axs[1].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
+    # axs[1].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     fig.tight_layout(pad=4)
+
+    figLegend = pylab.figure(figsize = (2,2))
+    pylab.figlegend(*axs[0].get_legend_handles_labels(), loc = 'upper left')
+    figLegend.savefig("./static/legend.png")
 
     analysis1=""
     analysis2=""

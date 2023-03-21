@@ -4,8 +4,9 @@ document.getElementById("file").onchange = function() {
     document.getElementById('loading').innerHTML='<img id="load_gif" src="static/processing.gif" width="20%">';
     document.getElementById('loading').style.margin='80px auto';
     setTimeout(() => {
-        document.getElementById('charts').innerHTML='<div class="what">charts</div><img src="/static/temp.png" class="chart-image" id="chart-image" alt="my plot">';
-        document.getElementById('chart-image').style.display='flex';
+        document.getElementById('charts').innerHTML='<div class="what">charts</div><div class="zoom"><img src="/static/temp.png" class="chart-image" id="chart-image" alt="my plot"><img src="/static/legend.png" class="legend-image" id="legend-image" alt="my legend"></div>';
+        document.getElementById('chart-image').style.display='inline';
+        document.getElementById('legend-image').style.display='inline';
         data()
     }, 3000);
     // console.log("working!");

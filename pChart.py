@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statistics
+import pylab
 
 import detector
 
@@ -26,13 +27,15 @@ def pChart(sample_data):
     plt.title('p Chart')
     plt.xlabel('Group')
     plt.ylabel('Fraction Defective')
-    plt.legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
+    # plt.legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
+
+    ax = plt.gca()
+    
 
     analysis1=""
     analysis2=""
 
-    print("P Chart:")
-    ax = plt.gca()
+    analysis1+="P Chart: "
     main_arr = ax.lines[0].get_data()
     main_arr_df = pd.DataFrame()
     main_arr_df['x']=main_arr[0]
@@ -68,4 +71,7 @@ def pChart(sample_data):
     
     controlSay = detector.anomalyDetection(df_grouped)
     plt.savefig('./static/temp.png')   # save the figure to file
+    figLegend = pylab.figure(figsize = (2,2))
+    pylab.figlegend(*ax.get_legend_handles_labels(), loc = 'upper left')
+    figLegend.savefig("./static/legend.png")
     return analysis1, analysis2, controlSay

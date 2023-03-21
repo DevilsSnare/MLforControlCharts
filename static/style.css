@@ -104,22 +104,30 @@
   }
   .charts {
     background-color: #929191;
-    /* height: 260px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
-  }
+    display:inline-flexbox;
+    text-align: center;
+    }
   .chart-image {
     margin: auto;
-    /* padding: 15px 0; */
-    width: 450px;
+    width: 350px;
     display: none;
-    justify-content: center;
-    border: 18px solid #929191;
-    border-radius: 4px;
+    border: 10px solid #929191;
+  }
+  .legend-image {
+    margin: auto;
+    width: 125px;
+    display: none;
+    border: 10px solid #929191;
+    border-left: 0px;
+    vertical-align: top;
+  }
+  .zoom {
     transition: transform .3s;
   }
-  .chart-image:hover {
+  .zoom:hover {
     transform: scale(1.5);
   }
   .general_analysis {
@@ -143,6 +151,7 @@
     font-size: 20px;
     font-weight: 700;
     color: white;
+    text-align: left;
   }
   .how-to {
     margin: auto;

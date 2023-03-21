@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statistics
+import pylab
 
 import detector
 
@@ -25,15 +26,14 @@ def xmR(sample_data):
 
     axs[0].plot(data['x'], linestyle='-', marker='o', color='black')
     axs[0].axhline(statistics.mean(data['x'])+3*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'red', linestyle = 'dashed', label='+3 Sigma / UCL')
-    axs[0].axhline(statistics.mean(data['x'])+2*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'limegreen', linestyle = 'dashed', label='+2 Sigma / UCL')
-    axs[0].axhline(statistics.mean(data['x'])+1*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'hotpink', linestyle = 'dashed', label='+1 Sigma / UCL')
-    axs[0].axhline(statistics.mean(data['x'])-1*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'hotpink', linestyle = 'dashed', label='-1 Sigma / LCL')
-    axs[0].axhline(statistics.mean(data['x'])-2*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'limegreen', linestyle = 'dashed', label='-2 Sigma / LCL')
+    axs[0].axhline(statistics.mean(data['x'])+2*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'limegreen', linestyle = 'dashed', label='+2 Sigma')
+    axs[0].axhline(statistics.mean(data['x'])+1*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'hotpink', linestyle = 'dashed', label='+1 Sigma')
+    axs[0].axhline(statistics.mean(data['x'])-1*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'hotpink', linestyle = 'dashed', label='-1 Sigma')
+    axs[0].axhline(statistics.mean(data['x'])-2*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'limegreen', linestyle = 'dashed', label='-2 Sigma')
     axs[0].axhline(statistics.mean(data['x'])-3*statistics.mean(data['mR'][1:len(data['mR'])])/1.128, color = 'red', linestyle = 'dashed', label='-3 Sigma / LCL')
     axs[0].axhline(statistics.mean(data['x']), color='blue', label="CL")
     axs[0].set_title('X Chart')
     axs[0].set(xlabel='Sample',ylabel='Range')
-    axs[0].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     axs[1].plot(data['mR'], linestyle='-', marker='o', color='black')
     axs[1].axhline(statistics.mean(data['mR'][1:len(data['mR'])])+3*statistics.mean(data['mR'][1:len(data['mR'])])*0.8525, color='red', linestyle ='dashed', label='+3 Sigma / UCL')
@@ -45,7 +45,10 @@ def xmR(sample_data):
     axs[1].axhline(statistics.mean(data['mR'][1:len(data['mR'])]), color='blue', label="CL")
     axs[1].set_title('mR Chart')
     axs[1].set(xlabel='Sample',ylabel='Range')
-    axs[1].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
+
+    figLegend = pylab.figure(figsize = (2,2))
+    pylab.figlegend(*axs[0].get_legend_handles_labels(), loc = 'upper left')
+    figLegend.savefig("./static/legend.png")
 
     analysis1=""
     analysis2=""

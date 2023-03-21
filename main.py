@@ -77,7 +77,6 @@ def boot(sample_data):
             i+=1
         if flag_conti:
             what_type="Data is continuous"
-            ## is there more than one data per subgroup?
             flag_subgroup = False
             num_col = len(sample_data.columns) - 1
             if num_col > 1 :
@@ -90,7 +89,6 @@ def boot(sample_data):
                 what="Data will use 'XmR chart'"
         else:
             what_type="Data is discrete"
-            ## does data follow Poisson distribution or Binomial
             flag_poisson = False
             mean = round(sample_data[1].mean(),0)
             var = round((sample_data[1].var()),0)
@@ -98,7 +96,7 @@ def boot(sample_data):
                 flag_poisson = True
                 what="Data will use 'C chart'"
             else:
-                what="Data will use 'P chart'"
+                what="Data will use 'C chart'"
     except:
         sample_size_temp = sample_data.columns.values[2]
         what_type="Data is discrete"
