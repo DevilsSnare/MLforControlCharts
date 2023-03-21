@@ -1,14 +1,8 @@
 # MLforControlCharts
 Machine Learning based approach for defining the Control Charts
 
-# How To Use 
+_Home_
+![](/static/main.png)
 
-*For Mac Users*
-
-python3 -m venv venv
-. venv/bin/activate
-pip install Flask
-flask --app main --debug run
-
-
-*in development*
+_Analysis_
+![](/static/analysis.png)
