@@ -3,6 +3,8 @@ from fileinput import filename
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import pdftables_api
+import os
 
 import xbar_r
 import xbar_s
@@ -14,6 +16,8 @@ import model
 app = Flask(__name__)
 app.secret_key = "super secret key"
 
+pdftables_api_key = 'ig8zw5vdtvsl'
+
 
 @app.route('/')
 @app.route('/index')
@@ -23,7 +27,15 @@ def index():
 @app.route('/data', methods=['POST'])
 def data():
     excelData = request.files['upload-file']
-    df = pd.read_excel(excelData)
+    fname = excelData.filename[-4:]
+    if fname==".pdf":
+        c = pdftables_api.Client(pdftables_api_key)
+        excelData.save('./static/input.pdf')
+        c.xlsx('./static/input.pdf', './static/output.xlsx')
+        df = pd.read_excel('./static/output.xlsx')
+    else:
+        df = pd.read_excel(excelData)
+    
     what_type, what = boot(df)
     session["what_type"]=what_type
     session["what"]=what
@@ -44,6 +56,10 @@ def data():
     session['analysis2']=analysis2
     session['controlSay']=controlSay
     session['trend']=trend
+
+    # os.remove('./static/input.pdf')
+    # os.remove('./static/output.xlsx')
+
     return redirect(url_for('temp'))
 
 @app.route('/temp', methods=['POST', 'GET'])
