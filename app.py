@@ -28,11 +28,14 @@ def index():
 def data():
     excelData = request.files['upload-file']
     fname = excelData.filename[-4:]
-    if fname==".pdf":
+    if fname=='.pdf':
         c = pdftables_api.Client(pdftables_api_key)
         excelData.save('./static/input.pdf')
+        print("pdf saved")
         c.xlsx('./static/input.pdf', './static/output.xlsx')
+        print("xlsx saved")
         df = pd.read_excel('./static/output.xlsx')
+        print("xlsx read")
     else:
         df = pd.read_excel(excelData)
     

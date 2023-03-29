@@ -24,7 +24,7 @@ def cChart(sample_data):
     plt.title('C Chart')
     plt.xlabel('Sample No.')
     plt.ylabel('Defect Count')
-    plt.legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
+    # plt.legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     ax = plt.gca()
     
@@ -32,7 +32,7 @@ def cChart(sample_data):
     analysis1=""
     analysis2=""
     
-    print("C Chart:")
+    analysis1+="C Chart: "
     # ax = plt.gca()
     main_arr = ax.lines[0].get_data()
     main_arr_df = pd.DataFrame()
