@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import statistics
 import pylab
 
+# importing anomaly detector codes
 import detector
 
 
@@ -24,7 +26,6 @@ def cChart(sample_data):
     plt.title('C Chart')
     plt.xlabel('Sample No.')
     plt.ylabel('Defect Count')
-    # plt.legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     ax = plt.gca()
     

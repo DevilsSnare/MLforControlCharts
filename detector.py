@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -5,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import statistics
 
+# main function to detect anomalies
 def anomalyDetection(df_grouped):    
     # Control chart rules lists setup
     R1_lower = []

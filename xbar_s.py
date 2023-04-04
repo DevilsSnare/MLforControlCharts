@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import statistics
 import pylab
 
+# importing anomaly detector codes
 import detector
 
 
@@ -19,6 +21,8 @@ def xbar_s(sample_data):
     fig, axs = plt.subplots(2, figsize=(10,10))
     constants = pd.read_excel('./assets/control_charts_constants.xlsx', sheet_name="Sheet1")
     sample_size = len(sample_data.columns) - 1
+    
+    # checking what control chart constants are required
     A3 = constants.loc[constants['m'] == sample_size]['A3']
     A3 = float(A3)
     B4 = constants.loc[constants['m'] == sample_size]['B4']
@@ -33,7 +37,6 @@ def xbar_s(sample_data):
     axs[0].axhline((statistics.mean(x_bar)), color='blue', label='CL')
     axs[0].set_title('X-bar Chart')
     axs[0].set(xlabel='Sample', ylabel='Range')
-    # axs[0].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     ## S chart
     axs[1].plot(s, linestyle='-', marker='o', color='black')
@@ -43,7 +46,6 @@ def xbar_s(sample_data):
     axs[1].set_ylim(bottom=0)
     axs[1].set_title('S Chart')
     axs[1].set(xlabel='Sample', ylabel='Range')
-    # axs[1].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     fig.tight_layout(pad=4)
 

@@ -1,9 +1,11 @@
+/* importing the font */
 @font-face {
     font-family: "InterRegular";
     src: url("../static/Inter-Regular.ttf") format(truetype);
   }
+
+  /* css styles for index.html content */
   html {
-    /* background-color: black; */
     background-image: radial-gradient(at top left, #E5E6E4 30%, #100C07 300%);
     width: 100%;
     min-height: 100%;
@@ -13,7 +15,6 @@
     margin: auto;
     max-width: 800px;
     padding: 1rem;
-    /* background-color: rebeccapurple; */
   }
   nav {
     display: flex;
@@ -132,14 +133,12 @@
   }
   .general_analysis {
     background-color: #929191;
-    /* height: 250px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
   }
   .trend_analysis {
     background-color: #929191;
-    /* height: 150px; */
     border-radius: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -176,8 +175,6 @@
   }
   .loading {
     text-align: center;
-    /* margin-top: 80px;
-    margin-bottom: 80px; */
   }
   footer {
     margin: auto;

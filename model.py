@@ -1,8 +1,10 @@
+# importing necessay libraries
 import numpy as np
 import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import train_test_split
 
+# import and read data for training the model
 ex = pd.read_csv('./assets/synthetic_control_data.csv', delim_whitespace=True, header=None)
 xdf = pd.DataFrame(columns=['mean', 'std', 'skew', 'kurt', 'label'])
 xdf['mean'] = np.mean(ex, axis=1)
@@ -17,10 +19,12 @@ xdf['label'].iloc[401:501] = 'upward_shift'
 xdf['label'].iloc[501:] = 'downward_shift'
 X = np.asarray(xdf[['mean', 'std', 'skew', 'kurt']])
 y = np.asarray(xdf['label'])
-## Support Vector Machines (SVM)
+
+## Support Vector Machines (SVM) algorithim
 classifier = svm.SVC(kernel='linear', gamma='auto', C=2)
 classifier.fit(X, y)
 
+# main function to detect trend
 def findTrend(test_data):
     if "sample_size" in test_data.columns:
         test_data[1]=test_data[1]/test_data['sample_size']

@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -6,11 +7,14 @@ import matplotlib.pyplot as plt
 import pdftables_api
 import os
 
+# importing different chart codes
 import xbar_r
 import xbar_s
 import xmR
 import cChart
 import pChart
+
+# importing trend detection model
 import model
 
 app = Flask(__name__)
@@ -18,15 +22,17 @@ app.secret_key = "super secret key"
 
 pdftables_api_key = 'ig8zw5vdtvsl'
 
-
+# rendere the index.html
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
 
+# get uploaded file from index.html and process it for analysis
 @app.route('/data', methods=['POST'])
 def data():
     excelData = request.files['upload-file']
+    # checking if the file uploaded is pdf or excel and taking necessary steps
     fname = excelData.filename[-4:]
     if fname=='.pdf':
         c = pdftables_api.Client(pdftables_api_key)
@@ -53,6 +59,7 @@ def data():
     if(what=="Data will use 'P chart'"):
         analysis1, analysis2, controlSay = pChart.pChart(df)
 
+    # find the trend in the dataset
     trend = model.findTrend(df)
 
     session['analysis1']=analysis1
@@ -60,11 +67,9 @@ def data():
     session['controlSay']=controlSay
     session['trend']=trend
 
-    # os.remove('./static/input.pdf')
-    # os.remove('./static/output.xlsx')
-
     return redirect(url_for('temp'))
 
+# data returned to the index.html
 @app.route('/temp', methods=['POST', 'GET'])
 def temp():
     what_type=session.get("what_type")
@@ -82,7 +87,7 @@ def temp():
         "trend": trend
     }
 
-
+# decision tree to decide which chart to use 
 def boot(sample_data):
     what_type=""
     what=""

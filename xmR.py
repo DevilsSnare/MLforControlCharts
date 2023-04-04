@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import statistics
 import pylab
 
+# importing anomaly detector codes
 import detector
 
 

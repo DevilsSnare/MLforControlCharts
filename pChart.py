@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import statistics
 import pylab
 
+# importing anomaly detector codes
 import detector
 
 
@@ -13,7 +15,6 @@ def pChart(sample_data):
     p=sample_data
     p['p'] = p[1]/p['sample_size']
 
-    # Plot p-chart
     plt.figure(figsize=(10,5))
     plt.plot(p['p'], linestyle='-', marker='o', color='black')
     plt.step(x=range(0,len(p['p'])), y=statistics.mean(p['p'])+3*(np.sqrt((statistics.mean(p['p'])*(1-statistics.mean(p['p'])))/(p['sample_size']))), color='red', linestyle='dashed', label='+3 Sigma / UCL')
@@ -27,11 +28,9 @@ def pChart(sample_data):
     plt.title('p Chart')
     plt.xlabel('Group')
     plt.ylabel('Fraction Defective')
-    # plt.legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     ax = plt.gca()
     
-
     analysis1=""
     analysis2=""
 

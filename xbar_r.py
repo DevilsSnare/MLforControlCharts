@@ -1,3 +1,4 @@
+# importing necessay libraries
 from flask import Flask, app, render_template, request, url_for, redirect, session
 from fileinput import filename
 import pandas as pd
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import statistics
 import pylab
 
+# importing anomaly detector codes
 import detector
 
 
@@ -19,6 +21,8 @@ def xbar_r(sample_data):
     fig, axs = plt.subplots(2, figsize=(10,10))
     constants = pd.read_excel('./assets/control_charts_constants.xlsx', sheet_name="Sheet1")
     sample_size = len(sample_data.columns) - 1
+
+    # checking what control chart constants are required
     A2 = constants.loc[constants['m'] == sample_size]['A2']
     A2 = float(A2)
     D4 = constants.loc[constants['m'] == sample_size]['D4']
@@ -27,14 +31,12 @@ def xbar_r(sample_data):
     D3 = float(D3)
     sigma = np.std(x_bar)
 
-    ## x-bar chart
     axs[0].plot(x_bar, linestyle='-', marker='o', color='black')
     axs[0].axhline((statistics.mean(x_bar)+A2*statistics.mean(r)), color='red', linestyle='dashed', label='+3 Sigma / UCL')
     axs[0].axhline((statistics.mean(x_bar)-A2*statistics.mean(r)), color='red', linestyle='dashed', label='-3 Sigma / LCL')
     axs[0].axhline((statistics.mean(x_bar)), color='blue', label='CL')
     axs[0].set_title('X-bar Chart')
     axs[0].set(xlabel='Sample', ylabel='Range')
-    # axs[0].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     ## R chart
     axs[1].plot(r, linestyle='-', marker='o', color='black')
@@ -44,7 +46,6 @@ def xbar_r(sample_data):
     axs[1].set_ylim(bottom=0)
     axs[1].set_title('R Chart')
     axs[1].set(xlabel='Sample', ylabel='Range')
-    # axs[1].legend(fancybox=True, framealpha=1, shadow=True,frameon=True, borderpad=1)
 
     fig.tight_layout(pad=4)
 
@@ -121,7 +122,6 @@ def xbar_r(sample_data):
     df_grouped['-1s'] = df_grouped['x_bar_bar']-(df_grouped['UCL']-df_grouped['x_bar_bar'])/3*1
     df_grouped['-2s'] = df_grouped['x_bar_bar']- (df_grouped['UCL']-df_grouped['x_bar_bar'])/3*2
     df_grouped['LCL'] = statistics.mean(df_grouped['x_bar'])-(A2*statistics.mean(df_grouped['R']))
-    # print("\nFrom Control Chart Rules:")
     controlSay = detector.anomalyDetection(df_grouped)
     fig.savefig('./static/temp.png')   # save the figure to file
     return analysis1, analysis2, controlSay
